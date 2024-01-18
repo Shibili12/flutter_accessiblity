@@ -36,8 +36,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_tts: ^3.8.5
-  vibration: ^1.8.4
-  flutter_accessibility_service: ^0.2.4
 
 dev_dependencies:
   flutter_test:
