@@ -8,11 +8,22 @@ class TextSIze extends StatefulWidget {
 }
 
 class _TextSIzeState extends State<TextSIze> {
-  double textScaleFactor = 1.0; // Initial text scale factor
+  double textScaleFactor = 1.0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    print("contrast : ${MediaQuery.of(context).toString()}");
+    bool isHighcontrast = MediaQuery.of(context).highContrast;
+
     return Scaffold(
+      // backgroundColor:
+      //     MediaQuery.of(context).highContrast ? Colors.black : Colors.red,
       appBar: AppBar(
         centerTitle: true,
         title: Text("TEXT SIZE"),
@@ -21,9 +32,17 @@ class _TextSIzeState extends State<TextSIze> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Text Size: ${textScaleFactor.toString()}',
-              style: TextStyle(fontSize: 20 * textScaleFactor),
+            ListTile(
+              title: Semantics(
+                explicitChildNodes: isHighcontrast,
+                child: Text(
+                  'Text Size: ',
+                  style: TextStyle(
+                    fontSize: 20 * textScaleFactor,
+                  ),
+                ),
+              ),
+              subtitle: Text(textScaleFactor.toStringAsFixed(3)),
             ),
             SizedBox(height: 20),
             Slider(
@@ -34,6 +53,13 @@ class _TextSIzeState extends State<TextSIze> {
                 updateTextScaleFactor(value);
               },
             ),
+            Tooltip(
+              message: "Ok Button",
+              child: ElevatedButton(
+                onPressed: () {},
+                child: const Text("OK"),
+              ),
+            )
           ],
         ),
       ),

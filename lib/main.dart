@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_accessiblity/homepage.dart';
 import 'package:flutter_accessiblity/login_page.dart';
+import 'package:flutter_accessiblity/text_size.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: false,
       ),
-      home: LoginPage(),
+      home: Homepage(),
     );
   }
 }
