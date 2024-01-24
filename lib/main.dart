@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_accessiblity/homepage.dart';
 import 'package:flutter_accessiblity/login_page.dart';
+import 'package:flutter_accessiblity/provider_class.dart';
 import 'package:flutter_accessiblity/text_size.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,12 +15,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: false,
+    return ChangeNotifierProvider(
+      create: (context) => TapNavigationprovider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: false,
+        ),
+        home: LoginPage(),
       ),
-      home: Homepage(),
     );
   }
 }

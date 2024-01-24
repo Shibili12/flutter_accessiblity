@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_accessiblity/provider_class.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   final FlutterTts flutterTts = FlutterTts();
   final FocusNode _imageNode = FocusNode(debugLabel: "Image Icon");
   final FocusNode _usernameNode = FocusNode(debugLabel: "User Name Textfield");
   final FocusNode _passwordNode = FocusNode(debugLabel: "password  textfield");
   final FocusNode _buttonNode = FocusNode(debugLabel: "Login Button");
 
-  int tapCount = 0;
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<TapNavigationprovider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -29,10 +26,8 @@ class _LoginPageState extends State<LoginPage> {
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
-          setState(() {
-            tapCount = (tapCount + 1) % 4;
-          });
-          switch (tapCount) {
+          provider.getTapcount();
+          switch (provider.tapcount) {
             case 0:
               FocusScope.of(context).requestFocus(_imageNode);
               _speak(_imageNode.debugLabel);
