@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_accessiblity/provider_class.dart';
+import 'package:flutter_accessiblity/provider_example/provider_class.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:provider/provider.dart';
 
